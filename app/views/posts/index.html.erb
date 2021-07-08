@@ -1,0 +1,14 @@
+<div class="container">
+
+<% if params[:category] %>
+    <% if @posts == [] %>
+      <h1>They're nothing here right now...</h1>
+    <% else %>
+      <h1><%= @posts.first.category.capitalize %></h1>
+    <% end %>
+  <% else %>
+  <h1>Hello there! I'm Maevb and welcome on my portfolio !</h1>
+<% end %>
+
+
+</div>

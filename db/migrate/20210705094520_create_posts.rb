@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.date :creation_date
       t.string :description
       t.string :url_web
+      t.string :category
 
       t.timestamps
     end
