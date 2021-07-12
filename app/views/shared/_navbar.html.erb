@@ -3,6 +3,14 @@
   <%= link_to "Illustrations", posts_path(category: "illustration"), class: "navbar-brand" %>
   <%= link_to "Animations", posts_path(category: "animation"), class: "navbar-brand" %>
   <%= link_to "Game Art", posts_path(category: "game"), class: "navbar-brand" %>
-  <%= link_to "Add post", new_post_path, class: "navbar-brand" %>
-  <%= link_to "Sign In", new_user_session_path, class: "navbar-brand" %>
+  
+  <% if user_signed_in? %>
+    <% if current_user.email == "toto@gmail.com" %>
+      <%= link_to "Add post", new_post_path, class: "navbar-brand" %>
+    <% end %>
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete,  class: "navbar-brand" %>
+  <% else %>
+    <%= link_to "Sign In", new_user_session_path, class: "navbar-brand" %>
+  <% end %>
+  
 </div>

@@ -1,5 +1,7 @@
 <%= simple_form_for(post) do |f| %>
   <%= f.input :category, collection: ["illustration","animation","game"], prompt: "Select your type of post" %>
-  <%= f.input :title %>
+  <%= f.input :title, prompt: "Title of your post" %>
+  <%= f.input :description, prompt: "Description of your post" %>
+  <%= f.input :contents, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit %>
 <% end %>

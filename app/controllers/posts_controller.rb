@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post_var, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def home
   end
@@ -13,24 +14,24 @@ class PostsController < ApplicationController
   end
 
   def show
-    @contents = @post.contents
+    # @contents = @post.contents
   end
 
   def new
     @post = Post.new
+    # @post_tag = PostsTag.new
     @post.user = current_user
-    @content = Content.new
   end
 
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    unless @contents.nil?
-      @contents.each do |content|
-        content = Content.create
-        content.post = @post
-      end
-    end
+    # unless @contents.nil?
+    #   @contents.each do |content|
+    #     content = Content.create
+    #     content.post = @post
+    #   end
+    # end
     if @post.save
       redirect_to root_path
     else
@@ -60,7 +61,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :category, :description, :creation_date, :url_web)
+    params.require(:post).permit(:title, :category, :description, :creation_date, :url_web, contents: [] )
   end
 
 end

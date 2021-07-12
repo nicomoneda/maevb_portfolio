@@ -5,6 +5,13 @@
       <h1>They're nothing here right now...</h1>
     <% else %>
       <h1><%= @posts.first.category.capitalize %></h1>
+      <% @posts.each do |post| %>
+        <h2><%= post.title %></h2>
+        <p><%= post.description %></p>
+        <%= image_tag post.contents.first, alttext: "Post 1st Image" %>
+
+        <%= link_to "Details", post_path(post) %>
+      <% end %>
     <% end %>
   <% else %>
   <h1>Hello there! I'm Maevb and welcome on my portfolio !</h1>
